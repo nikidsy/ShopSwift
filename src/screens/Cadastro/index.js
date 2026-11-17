@@ -1,4 +1,4 @@
-import { Image, Text, View } from "react-native";
+import { Image, View } from "react-native";
 import logo from "../../assets/logoShopSwift.png";
 import {
   Container,
@@ -15,39 +15,41 @@ import {
   TextTitle,
 } from "./style";
 
-export const Cadastro = () => {
+export const Cadastro = ({ navigation }) => {
   return (
-    <Container>
-      <Image source={logo} />
+      <Container>
+        <Image source={logo} />
 
-      <ContentCadastro>
-        <TextTitle>
-          Crie uma conta <TextHighlight>e se surpreenda</TextHighlight>
-        </TextTitle>
+        <ContentCadastro>
+          <TextTitle>
+            Crie uma conta <TextHighlight>e se surpreenda</TextHighlight>
+          </TextTitle>
 
-        <FormContainer>
-          <InputsContainer>
-            <View>
-              <TextLabel>E-mail:</TextLabel>
-              <Input/>
-            </View>
+          <FormContainer>
+            <InputsContainer>
+              <View>
+                <TextLabel>E-mail:</TextLabel>
+                <Input keyboardType="email-address" />
+              </View>
 
-            <View>
-              <TextLabel>Senha:</TextLabel>
-              <Input />
-            </View>            
+              <View>
+                <TextLabel>Senha:</TextLabel>
+                <Input secureTextEntry={true} />
+              </View>
+            </InputsContainer>
 
-          </InputsContainer>
+            <CreateAccountButton onPress={() => navigation.replace("home")}>
+              <TextButton>Criar conta</TextButton>
+            </CreateAccountButton>
+          </FormContainer>
 
-          <CreateAccountButton>
-            <TextButton>Criar conta</TextButton>
-          </CreateAccountButton>
-
-        </FormContainer>
-
-        <TextLogin>Já tem conta? <TextNavigation>Fazer login</TextNavigation></TextLogin>
-
-      </ContentCadastro>
-    </Container>
+          <TextLogin>
+            Já tem conta?{" "}
+            <TextNavigation onPress={() => navigation.navigate("login")}>
+              Fazer login
+            </TextNavigation>
+          </TextLogin>
+        </ContentCadastro>
+      </Container>
   );
 };
