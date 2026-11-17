@@ -1,20 +1,19 @@
-import { NavigationContainer } from "@react-navigation/native"
-import { createNativeStackNaviator } from "@react-navigation/native-stack"
-import {Login} from "../screens/Login";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Login } from "../screens/Login";
+import { Cadastro } from "../screens/Cadastro";
+import { Home } from "../screens/Home";
+
+const Stack = createNativeStackNavigator();
 
 export const AppRouter = () => {
-
-    const Stack = createNativeStackNaviator()
-
     return (
         <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator initialRouteName="login" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="login" component={Login} />
-                <Stack.Screen name="home" component={Home} />
                 <Stack.Screen name="register" component={Cadastro} />
-                <Stack.Screen name="products" component={Produtos} />
-                <Stack.Screen name="contact" component={Contato} />
+                <Stack.Screen name="home" component={Home} />
             </Stack.Navigator>
         </NavigationContainer>
-    )
-}
+    );
+};
